@@ -109,7 +109,7 @@ Practice drill: open `ApplicationBuilderExtensions` and list, in order, five thi
 
 Round: C#/.NET deep-dive
 What it's really testing: reflection, assembly loading, and open/closed design.
-Repo anchor: `INopStartup` implementations discovered and ordered — core module [NopStartup.cs#L67 + Order L336](../../src/Presentation/Nop.Web.Framework/Infrastructure/NopStartup.cs#L67); 33 plugin projects under [src/Plugins](../../src/Plugins).
+Repo anchor: `INopStartup` implementations discovered and ordered — core module [NopStartup.cs#L67 + Order L336](../../src/Presentation/Nop.Web.Framework/Infrastructure/NopStartup.cs#L67); 32 plugin projects under [src/Plugins](../../src/Plugins).
 Junior answer sounds like: "Reflection scans assemblies for a marker interface."
 Mid-level answer adds: discovery + `Order` property = deterministic composition; plugins can *re-register* core services to override behavior — the DI container's "last registration wins" becomes the extension mechanism.
 Senior answer includes: risks — nothing to ctrl-click (hidden control flow), version skew between plugin and core (the `virtual`-everywhere contract from Q6 is what absorbs it), boot-time cost, and trust (a plugin runs with full app privileges).

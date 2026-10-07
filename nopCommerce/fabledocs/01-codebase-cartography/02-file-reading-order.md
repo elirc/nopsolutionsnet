@@ -15,7 +15,7 @@
 | 7 | [ProductController.cs#L129-L203](../../src/Presentation/Nop.Web/Controllers/ProductController.cs#L129-L203) | the canonical action: gates → side effects → factory → view | other actions for now |
 | 8 | [ProductModelFactory.cs#L1502-L1560](../../src/Presentation/Nop.Web/Factories/ProductModelFactory.cs#L1502) | what "prepare a model" means; count the service calls | all 2,024 lines |
 | 9 | [LoginValidator.cs](../../src/Presentation/Nop.Web/Validators/Customer/LoginValidator.cs#L9-L34) | FluentValidation at the edge; conditional rules | — |
-| 10 | [ShoppingCartService.cs#L1549-L1668](../../src/Libraries/Nop.Services/Orders/ShoppingCartService.cs#L1549) | warnings-list validation; update-vs-insert | the other 1,900 lines |
+| 10 | [ShoppingCartService.cs#L1549-L1684](../../src/Libraries/Nop.Services/Orders/ShoppingCartService.cs#L1549) | warnings-list validation; update-vs-insert | the other 1,900 lines |
 | 11 | [CacheEventConsumer.cs](../../src/Libraries/Nop.Services/Caching/CacheEventConsumer.cs#L13-L75) | write → event → eviction spine | — |
 | 12 | [ProductServiceTests.cs#L63-L156](../../src/Tests/Nop.Tests/Nop.Services.Tests/Catalog/ProductServiceTests.cs#L63) | test naming and style you'll be expected to match | — |
 

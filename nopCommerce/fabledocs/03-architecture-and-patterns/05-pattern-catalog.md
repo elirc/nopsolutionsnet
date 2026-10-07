@@ -162,9 +162,9 @@ Drill: read the UpgradeTo500 folder. Classify each migration: pure schema, pure 
 
 ## Pattern 14: Convention-Based Startup Modules & Plugins
 
-Problem it solves: 33 plugin projects must register services, routes, and pipeline steps without editing core code.
+Problem it solves: 32 plugin projects must register services, routes, and pipeline steps without editing core code.
 General shape: any assembly can contain `INopStartup` implementations discovered by reflection at boot, ordered by an `Order` property; plugins ship as separate projects loaded at runtime.
-Real example: [NopStartup.cs#L67 + Order at L336](../../src/Presentation/Nop.Web.Framework/Infrastructure/NopStartup.cs#L67) (the core module registering ~200 services); orchestration from [Program.cs](../../src/Presentation/Nop.Web/Program.cs) via `ConfigureApplicationServices`
+Real example: [NopStartup.cs#L67 + Order at L336](../../src/Presentation/Nop.Web.Framework/Infrastructure/NopStartup.cs#L67) (the core module making 158 `services.Add*` registrations — 143 scoped, 13 singleton, 2 transient); orchestration from [Program.cs](../../src/Presentation/Nop.Web/Program.cs) via `ConfigureApplicationServices`
 Second example: any plugin's startup, e.g. under [src/Plugins/Nop.Plugin.Payments.PayPalCommerce](../../src/Plugins/Nop.Plugin.Payments.PayPalCommerce)
 Why this implementation works: open/closed at the deployment level — features arrive as folders, not core diffs; ordering gives deterministic pipeline assembly.
 Failure modes: reflection-based discovery hides the registration graph (nothing to ctrl-click); a plugin can re-register/override core services — powerful and dangerous; boot cost scales with assembly scanning.

@@ -45,7 +45,7 @@ ISP: "I reduced a debt's interest rate without paying off the principal — deli
 
 ## P5: Storefront REST endpoints for headless product browsing (2–4 weeks)
 Problem/value: modern storefront experiments need JSON; core is MVC-only (API exists only as a plugin).
-Decisions: build as a **plugin** (follow [WebApi.Frontend](../../src/Plugins/Nop.Plugin.Misc.WebApi.Frontend)'s architecture — that choice itself follows the repo's grain); read-only v1 (catalog + search); DTOs separate from view models *and* entities; the three visibility gates ([key flow 1](../01-codebase-cartography/05-key-flows.md)) enforced in one shared query layer.
+Decisions: build as a **plugin** (follow the plugin conventions — [WebApi.Frontend](../../src/Plugins/Nop.Plugin.Misc.WebApi.Frontend) shows the shell: plugin class, defaults, configuration controller; its actual endpoints are not in this repo, so you design the API layer yourself — that choice itself follows the repo's grain); read-only v1 (catalog + search); DTOs separate from view models *and* entities; the three visibility gates ([key flow 1](../01-codebase-cartography/05-key-flows.md)) enforced in one shared query layer.
 Test plan: contract tests per endpoint; authorization tests per gate (cross-store leakage!).
 Security plan: rate limiting at proxy; no exact stock counts ([review kata 4](../04-code-reading-gym/04-review-katas.md)).
 Rollout: plugin install/uninstall is the flag. Open questions: pagination cursor vs offset; cache headers.

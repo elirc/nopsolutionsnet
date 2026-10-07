@@ -37,7 +37,7 @@ Open these files **in this order** and read only the cited ranges:
 ## Saturday evening — trace flow #2: add to cart
 
 1. [ShoppingCartController.AddProductToCart_Details](../src/Presentation/Nop.Web/Controllers/ShoppingCartController.cs#L791-L874) — parses the raw form (attributes, quantity, rental dates), then delegates.
-2. [ShoppingCartService.AddToCartAsync](../src/Libraries/Nop.Services/Orders/ShoppingCartService.cs#L1549-L1668) — the validation style to internalize: a **warnings list** accumulates human-readable failures and the method returns them instead of throwing. Permission checks first (L1560–L1570), then a bot check (L1572), then update-vs-insert.
+2. [ShoppingCartService.AddToCartAsync](../src/Libraries/Nop.Services/Orders/ShoppingCartService.cs#L1549-L1684) — the validation style to internalize: a **warnings list** accumulates human-readable failures and the method returns them instead of throwing. Permission checks first (L1560–L1570), then a bot check (L1572), then update-vs-insert.
 3. [EntityRepository.UpdateAsync](../src/Libraries/Nop.Data/EntityRepository.cs#L393) — every write publishes an `EntityUpdatedEvent<T>`; [CacheEventConsumer](../src/Libraries/Nop.Services/Caching/CacheEventConsumer.cs#L13-L53) hears it and evicts caches. Writes and cache invalidation are coupled by *events*, not by discipline.
 
 ## Sunday — first 10 files, one change, one teach-back

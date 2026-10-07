@@ -36,7 +36,7 @@ Stronger/simpler alternatives: microservices (only justified at large org scale)
 
 ## Step 3 — API sketch (5 min)
 
-The repo is server-rendered MVC, not REST — routes like `/product/{slug}` resolve to [ProductController.ProductDetails](../../src/Presentation/Nop.Web/Controllers/ProductController.cs#L129), and mutations are form POSTs returning JSON fragments (see the `{success, message, redirect}` shapes in [ShoppingCartController.cs#L796-L810](../../src/Presentation/Nop.Web/Controllers/ShoppingCartController.cs#L796-L810)). An actual REST API ships as a plugin ([Nop.Plugin.Misc.WebApi.Frontend](../../src/Plugins/Nop.Plugin.Misc.WebApi.Frontend)).
+The repo is server-rendered MVC, not REST — routes like `/product/{slug}` resolve to [ProductController.ProductDetails](../../src/Presentation/Nop.Web/Controllers/ProductController.cs#L129), and mutations are form POSTs returning JSON fragments (see the `{success, message, redirect}` shapes in [ShoppingCartController.cs#L796-L810](../../src/Presentation/Nop.Web/Controllers/ShoppingCartController.cs#L796-L810)). An actual REST API ships as a plugin ([Nop.Plugin.Misc.WebApi.Frontend](../../src/Plugins/Nop.Plugin.Misc.WebApi.Frontend)) — note that in this source tree that plugin is only a 4-file, 128-line shell (plugin class, defaults, an EventConsumer and a configuration controller); the API endpoints themselves are not in this repository (verified 2026-10-06).
 
 For the whiteboard, sketch REST and keep moving:
 
@@ -85,7 +85,7 @@ Background work: in-app scheduler ([ScheduleTaskRunner#L115](../../src/Libraries
 2. **"Add real-time inventory across nodes."** Memory cache breaks; discuss Redis, stock reservations with TTL, and the oversell/undersell tradeoff.
 3. **"Handle 10x Black Friday traffic."** Cache stampede on hot products, queue depth on checkout, DB connection limits; degrade gracefully (cached prices, async order confirmation).
 4. **"Split payments into a service."** What contract? Idempotent capture API, outbox events both directions, saga for refunds — and what you lose (single-transaction simplicity you saw in Step 5).
-5. **"Add a mobile REST API."** The repo's answer is a plugin ([WebApi.Frontend](../../src/Plugins/Nop.Plugin.Misc.WebApi.Frontend)); discuss versioning and not coupling API models to view models.
+5. **"Add a mobile REST API."** The repo's answer is a plugin ([WebApi.Frontend](../../src/Plugins/Nop.Plugin.Misc.WebApi.Frontend) — only a configuration shell in this tree); discuss versioning and not coupling API models to view models.
 
 ## Grading yourself
 

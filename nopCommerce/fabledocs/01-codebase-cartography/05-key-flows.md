@@ -49,7 +49,7 @@ Why this flow matters: it's the repo's clearest example of *validation as data* 
 
 Open these files first:
 - [ShoppingCartController.cs#L791-L874](../../src/Presentation/Nop.Web/Controllers/ShoppingCartController.cs#L791-L874) — form parsing
-- [ShoppingCartService.cs#L1549-L1668](../../src/Libraries/Nop.Services/Orders/ShoppingCartService.cs#L1549-L1668) — business rules
+- [ShoppingCartService.cs#L1549-L1684](../../src/Libraries/Nop.Services/Orders/ShoppingCartService.cs#L1549-L1684) — business rules
 - [CacheEventConsumer.cs#L13-L53](../../src/Libraries/Nop.Services/Caching/CacheEventConsumer.cs#L13-L53) — invalidation
 
 Trace:

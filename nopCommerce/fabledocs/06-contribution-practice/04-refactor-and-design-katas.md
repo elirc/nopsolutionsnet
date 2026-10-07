@@ -3,7 +3,7 @@
 Eight paper-first exercises. Output is a design note or a small local diff, never a big rewrite. Self-grading criteria per kata; the meta-skill is *sequencing changes so every intermediate state ships safely*.
 
 ## K1: Heal a boundary leak
-Take the product-match rule in [ShoppingCartController.cs#L842-L849](../../src/Presentation/Nop.Web/Controllers/ShoppingCartController.cs#L842-L849) (domain rule in a controller). Design its move into `ShoppingCartService` such that the WebApi plugin path gets it for free.
+Take the product-match rule in [ShoppingCartController.cs#L842-L849](../../src/Presentation/Nop.Web/Controllers/ShoppingCartController.cs#L842-L849) (domain rule in a controller). Design its move into `ShoppingCartService` such that any API plugin path (none ships with endpoints in this tree — WebApi.Frontend here is a configuration shell) gets it for free.
 Grade — Solid: new service-side check, controller delegates, warning-list style preserved. Strong: notes that the service signature is public API ([pattern 16](../03-architecture-and-patterns/05-pattern-catalog.md)) and chooses an additive path.
 
 ## K2: Design the outbox upgrade
